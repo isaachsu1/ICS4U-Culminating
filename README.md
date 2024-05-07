@@ -1,6 +1,8 @@
 # ICS4U-Culminating
 
-This repository containes all the programs for the tasks.
+This repository containes all the programs for the tasks within the 
+culminating assignment for ICS4U.
+
 Organizaiton:
 - the first number in the name is the task number
 - the second number in the name is the program number
