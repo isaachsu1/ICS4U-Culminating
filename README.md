@@ -7,3 +7,4 @@ Organizaiton:
 - the first number in the name is the task number
 - the second number in the name is the program number
 - Example: 1.2 is task 1, program 2
+- Note that some tasks may only contain 1 program, which meets both of the programming objectives outlined in the task
