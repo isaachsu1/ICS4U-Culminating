@@ -1,0 +1,27 @@
+#2. Seleciton Sort
+def selc():
+    #Get user input
+    inp = input("Enter the integers to be sorted, separated by spaces: ")
+    #Convert the input into a list of integers
+    arr = list(map(int, inp.split()))
+    #Print the original array
+    print("Original array:", arr)
+    #Get the length of the array
+    n = len(arr)
+
+    #Selection Sort
+    for i in range(n):
+        #Assume the minimum element is the first element of the unsorted portion
+        min_idx = i
+        #Find the index of the minimum element in the remaining unsorted portion
+        for j in range(i + 1, n):
+            if arr[j] < arr[min_idx]:
+                min_idx = j
+        #Swap the found minimum element with the first element of the unsorted portion
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]
+
+    #Print the sorted array
+    print("Sorted array:", arr)
+
+#Call funciton
+selc()
