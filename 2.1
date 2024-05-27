@@ -1,0 +1,26 @@
+#1. Bubble sort
+def bub():
+    #Get user input
+    inp = input("Enter the integers to be sorted, separated by spaces: ")
+    #Convert the input into a list of integers
+    arr = list(map(int, inp.split()))
+    #Print the original array
+    print("Original array:", arr)
+    #Get the length of the array
+    n = len(arr)
+
+
+    #Bubble sort loop
+    for i in range(n):
+        #Go through the array
+        for j in range(n - i - 1):
+            #Swap if the element found is greater than the next element
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+
+    #Print sorted array
+    print("Sorted array:", arr)
+
+
+#Call function
+bub()
