@@ -1,0 +1,19 @@
+#1.	Implement a recursive function to calculate the factorial of a number
+#Define function
+def fact():
+  #Get number from user
+  n = int(input("Enter the number: "))
+  #Define starting values
+  total = 0
+  i = 0
+  #Calculate factorial
+  while i <= n:
+    total += i
+    i += 1
+
+  #Print factorial of n to the user
+  print("the factorial of", n,"is", total)
+
+
+#Call function
+fact()
