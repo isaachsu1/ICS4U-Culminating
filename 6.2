@@ -1,0 +1,129 @@
+#2.	Implement error handling in sorting and searching algorithms to handle edge
+#cases, such as empty lists or non-existent targets.
+def bub():
+  try:
+    #Get user input
+    inp = input("Enter the integers to be sorted, separated by spaces: ")
+    #Convert the input into a list of integers
+    arr = list(map(int, inp.split()))
+    #Print the original array
+    print("Original array:", arr)
+    #Get the length of the array
+    n = len(arr)
+
+    #Bubble sort loop
+    for i in range(n):
+        #Go through the array
+        for j in range(n - i - 1):
+            #Swap if element found is greater than next element
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    #Print sorted array
+    print("Sorted array:", arr)
+  except ValueError:
+    print("Invalid value entered")
+
+def selc():
+  try:
+    #Get user input
+    inp = input("Enter the integers to be sorted, separated by spaces: ")
+    #Convert input into list of integers
+    arr = list(map(int, inp.split()))
+    #Print original array
+    print("Original array:", arr)
+    #Get length of array
+    n = len(arr)
+
+    #Selection Sort
+    for i in range(n):
+        #Assume minimum element is first element of unsorted portion
+        min_idx = i
+        #Find index of minimum element in unsorted portion
+        for j in range(i + 1, n):
+            if arr[j] < arr[min_idx]:
+                min_idx = j
+        #Swap found minimum element with first element of unsorted portion
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]
+
+    #Print sorted array
+    print("Sorted array:", arr)
+  except ValueError:
+    print("invalid value entered")
+
+def bi():
+  try:
+    #Get sorted list
+    arr = sorted(map(int, input("Enter a sorted list of numbers separated by spaces: ").split()))
+    #Get input for target
+    target = int(input("Enter the target element: "))
+    #Create list to store indices where target is found
+    found = []
+    left = 0
+    right =len(arr) - 1
+
+    #Binary search loop
+    while left <= right:
+        #Find middle index of list
+        mid = (left + right) // 2
+        #If middle index is target
+        if arr[mid] == target:
+            #Add current index to found indices list
+            found.append(mid)
+            #Move pointers to find other instances
+            left_ptr, right_ptr = mid - 1, mid + 1
+            while left_ptr >= left and arr[left_ptr] == target:
+                #Add left indices to found indices list
+                found.append(left_ptr)
+                left_ptr -= 1
+            while right_ptr <= right and arr[right_ptr] == target:
+                #Add rig4ht indices to found indices list
+                found.append(right_ptr)
+                right_ptr += 1
+
+            #Exit loop after finding all instances
+            break
+
+        elif arr[mid] < target:
+            #Adjust left pointer
+            left = mid + 1
+        else:
+            #Adjust right pointer
+            right = mid - 1
+
+    #Print results
+    if found:
+        print("Element", target, "is present at indices:", found)
+    else:
+        print("Element", target, "is not present in the list.")
+
+  #Exception handling
+  except ValueError:
+    print("invalid value entered")
+
+#Define main function
+def main():
+  #try program
+  try:
+    #Give options and get input from user
+    print("Enter 1 for bubble sort program \nEnter 2 for selection sort \nEnter 3 for binary search \nEnter 4 to quit")
+    choice = int(input("What program do you want to access: "))
+
+    #Define choices using if decision structure
+    if choice == 1:
+      bub()
+      main()
+    if choice == 2:
+      selc()
+      main()
+    if choice == 3:
+      bi()
+      main()
+    if choice == 4:
+      print("System closed")
+
+  #ValueError output
+  except ValueError:
+      print("Please enter a number from 1 to 4.")
+      main()
+
+main()
