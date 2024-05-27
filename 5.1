@@ -1,0 +1,23 @@
+def main():
+    print("This program reads numbers from one file, squares each number,\n and writes the results to another file")
+    
+    #Get the file names
+    infileName = input("What file is the data in? ")
+    outfileName = input("What file should the data go in? ")
+
+    #Open the files
+    infile = open(infileName, "r")
+    outfile = open(outfileName, "w")
+    
+    #Process each line of the input file
+    for line in infile:
+        # Convert the line to an integer and square it
+        num = int(line.strip())
+        squared_num = num ** 2
+        # Write the squared number to the output file
+        print(squared_num, file=outfile)
+
+    #Print where processed data is
+    print("Data has been processed and written to", outfileName)
+        
+main()
