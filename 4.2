@@ -1,0 +1,16 @@
+#2.	Write a recursive function to calculate the Fibonacci sequence
+#Define fibonnaci function
+def fibon(n):
+    #If n is less than 1
+    if n <= 1:
+        return n
+    else:
+        #Calculate Fibonacci number using last two Fib numbers
+        return fibon(n-1) + fibon(n-2)
+
+
+#Take input for number of Fibonacci numbers
+n = int(input("Enter the number of values: "))
+#Print Fibonacci numbers up to n
+for i in range(n):
+    print(fibon(i))
