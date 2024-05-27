@@ -1,0 +1,102 @@
+#1.	Modify the student information system to handle potential errors,
+#such as invalid input or file I/O errors.
+#create class
+class StudentManager:
+    def __init__(self):
+        #create empty list for student info
+        self.students = []
+
+    #Define add student function
+    def addstudent(self, name, age, grade):
+        #Add new student to student info list
+        self.students.append({"name": name, "age": age, "grade": grade})
+
+    #Define display student function
+    def displaystudents(self):
+        #Print student records in the list
+        print("\nStudent Records:")
+        for idx, student in enumerate(self.students, start=1):
+            print(f"{idx}. Name: {student['name']}, Age: {student['age']}, Grade: {student['grade']}")
+
+    #Dine search student function
+    def searchstudent(self, name):
+        #Search for a student by name (case-insensitive)
+        return next((s for s in self.students if s["name"].lower() == name.lower()), None)
+
+    #Define updates tudent function
+    def updatestudent(self, name, new_age=None, new_grade=None):
+        #Find the student by name
+        student = self.searchstudent(name)
+        if student:
+            #Update age if new_age
+            if new_age:
+                student["age"] = new_age
+            #Update grade if new_grade
+            if new_grade:
+                student["grade"] = new_grade
+            return True  #Return True if update is successful
+        return False  #Return False if student is unseccessful
+
+
+#define main function
+def main():
+    manager = StudentManager()  #Instance of StudentManager
+
+    #Create while loop
+    while True:
+        #Get choice from user
+        choice = input("\nMenu:\n1. Add a new student\n2. Display all students\n3. Search for a student\n4. Update student information\n5. Exit\nEnter your choice (1-5): ")
+
+        if choice == "1":
+          try:
+            #Prompt user for student details
+            name = input("Student name: ")
+            age = int(input("Student age: "))
+            grade = input("Student grade: ")
+            manager.addstudent(name, age, grade)
+          except ValueError:
+            print("Invalid input")
+
+        elif choice == "2":
+            #Display all students in the list
+            manager.displaystudents()
+
+        elif choice == "3":
+            #Search for a student by name
+            name = input("Student name to search: ")
+            student = manager.searchstudent(name)
+            if student:
+                print(f"Found: {student}")
+            else:
+                print("Student not found")
+
+        elif choice == "4":
+          try:
+            #Prompt user for new details
+            name = input("Student name to update: ")
+            new_age = input("New age (blank to skip): ")
+            new_grade = input("New grade (blank to skip): ")
+            #Convert new_age to integer if provided, otherwise set to None
+            new_age = int(new_age) if new_age else None
+            #If new_grade is an empty string, set to none
+            new_grade = new_grade or None
+          except ValueError:
+            print("Invalid input")
+            #If update successful
+            if manager.updatestudent(name, new_age, new_grade):
+                print("Information updated.")
+            #If student not found
+            else:
+                print("Student not found")
+
+        elif choice == "5":
+            #Print exit message
+            print("Exit program.")
+            #Break loop
+            break
+
+        else:
+            #Print invalid choice output
+            print("Please enter a number from 1 to 5.")
+
+main()
