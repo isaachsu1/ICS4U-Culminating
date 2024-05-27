@@ -1,0 +1,44 @@
+#1. Implement binary search algorithm to find target elements in sorted lists.
+#Define function
+def bi():
+    #Get sorted list
+    arr = sorted(map(int, input("Enter a sorted list of numbers separated by spaces: ").split()))
+    #Get target
+    target = int(input("Enter the target element: "))
+    #Create List to store indices where target found
+    found = []
+    left = 0
+    right =len(arr) - 1
+
+    #Binary search loop
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            #Add current index to found indices list
+            found.append(mid)
+            #Move pointers to find other instances
+            left_ptr, right_ptr = mid - 1, mid + 1
+            while left_ptr >= left and arr[left_ptr] == target:
+                #Add left indices to found indices list
+                found.append(left_ptr)
+                left_ptr -= 1
+            while right_ptr <= right and arr[right_ptr] == target:
+                #Add right indices to found indices list
+                found.append(right_ptr)
+                right_ptr += 1
+            #Exit loop
+            break
+        elif arr[mid] < target:
+            left = mid + 1  #Adjust left pointer
+        else:
+            right = mid - 1  #Adjust right pointer
+
+    #Print results
+    if found:
+        print("Element", target, "is present at indices:", found)
+    else:
+        print("Element", target, "is not present in the list.")
+
+
+#Call function
+bi()
