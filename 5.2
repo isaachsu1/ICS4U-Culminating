@@ -1,0 +1,17 @@
+def main():
+    #Get file from user
+    fileName = input("What file is the data in? ")
+    
+    # Prompt the user to input the data to append
+    data_to_append = input("Enter the data you want to append: ")
+
+    #Open file to append
+    file = open(fileName, 'a')
+    #Write data in file
+    file.write(data_to_append + '\n')
+    #Close file
+    file.close()
+    #Print where the data has been written
+    print("Data appended successfully to", fileName)
+
+main()
