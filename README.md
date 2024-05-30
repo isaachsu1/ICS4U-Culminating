@@ -15,3 +15,6 @@ How to run programs:
   - one filled with numbers in multiple lines for 5.1
   - the second is empty and will be where the squared numbers from file one are stored for 5.1
   - The third is empty and will have text added to it through program 5.2
+  - For 5.1 use the first file as the file with the data
+  - For 5.1 use the second file as the one the new data will be entered in
+  - For 5.2 use the third file as the one you wish to append
